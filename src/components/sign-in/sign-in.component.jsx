@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 
 import { ReactComponent as Logo } from "../../assets/icons/logo.svg";
+import { ReactComponent as LoginErrorMessage } from "../../assets/icons/login-error-message.svg";
 import Spinner from "../spinner/spinner.component";
 
 import {
@@ -75,9 +76,7 @@ const SignIn = () => {
       </Form>
 
       {loading && <Spinner />}
-      {authError && !loading && (
-        <ErrorMessage>Email e/ou senha incorretos.</ErrorMessage>
-      )}
+      {authError && !loading && <LoginErrorMessage />}
     </SignInContainer>
   );
 };

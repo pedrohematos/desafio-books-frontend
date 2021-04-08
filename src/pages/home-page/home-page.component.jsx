@@ -5,6 +5,9 @@ import { ReactComponent as LogOutButton } from "../../assets/icons/logout.svg";
 import { ReactComponent as PreviousPageButton } from "../../assets/icons/previous-page-button.svg";
 import { ReactComponent as NextPageButton } from "../../assets/icons/next-page-button.svg";
 
+import BookCard from "../../components/book-card/book-card.component";
+import { BOOK_CARD_DATA } from "../../components/book-card/book-card-data";
+
 import {
   HomePageContainer,
   NavBar,
@@ -14,6 +17,8 @@ import {
 } from "./home-page.styles";
 
 const HomePage = () => {
+  const { data } = BOOK_CARD_DATA;
+
   return (
     <HomePageContainer>
       <NavBar>
@@ -24,7 +29,11 @@ const HomePage = () => {
         </WelcomeContainer>
       </NavBar>
 
-      <ContentContainer>Aqui ficam os livros!</ContentContainer>
+      <ContentContainer>
+        {data.map((bookData) => (
+          <BookCard key={bookData.id} bookData={bookData} />
+        ))}
+      </ContentContainer>
 
       <PaginationContainer>
         <div>

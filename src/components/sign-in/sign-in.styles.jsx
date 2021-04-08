@@ -1,25 +1,63 @@
 import styled from "styled-components";
 
-export const StyledSignInContainer = styled.div`
-  border: 1px solid black;
-  margin-top: 33vh;
+export const SignInContainer = styled.div`
+  margin-top: 30vh;
   width: 368px;
-  height: 260px;
 
-  position: relative;
   display: flex;
   flex-direction: column;
+
+  //border: 1px solid black;
+
+  /* @media screen and (max-width: 800px) {
+    width: 100%;
+    padding: 15px;
+  } */
 `;
 
-export const StyledForm = styled.form`
+export const Form = styled.form`
   margin-top: 50px;
+  //border: 1px solid white;
 
-  //display: flex;
-  //align-items: center;
-  //justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 `;
 
-export const StyledButton = styled.button`
+export const InputContainer = styled.div`
+  //border: solid 1px red;
+  position: relative;
+`;
+
+export const Input = styled.input`
+  border: none;
+  outline: none;
+
+  width: 100%;
+  height: 40px;
+
+  padding: 23px 0 10px;
+  padding-left: 16px;
+  margin-bottom: 16px;
+
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.32);
+
+  font-size: 16px;
+  color: white;
+`;
+
+export const Label = styled.label`
+  position: absolute;
+
+  font-size: 16px;
+  color: white;
+
+  padding-left: 16px;
+  padding-top: 5px;
+`;
+
+export const Button = styled.button`
   box-shadow: inset 0px 1px 0px 0px #ffffff;
   background: linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
   background-color: #ffffff;
@@ -33,7 +71,7 @@ export const StyledButton = styled.button`
   padding: 5px 10px;
   text-decoration: none;
   text-shadow: 0px 1px 0px #ffffff;
-  margin-left: 5px;
+  //margin-left: 5px;
   //
   width: 100px;
   height: 30px;

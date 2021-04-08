@@ -32,3 +32,20 @@ export const WelcomeContainer = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
+
+export const ContentContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 42px;
+  margin-bottom: 24px;
+`;
+
+export const PaginationContainer = styled.div`
+  float: right;
+  width: 190px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;

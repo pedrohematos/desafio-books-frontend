@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 
 import { ReactComponent as Logo } from "../../assets/icons/logo.svg";
+import Spinner from "../spinner/spinner.component";
 
 import {
   SignInContainer,
@@ -11,6 +12,7 @@ import {
   Button,
   InputContainer,
   Label,
+  ErrorMessage,
 } from "./sign-in.styles";
 
 const SignIn = () => {
@@ -21,29 +23,27 @@ const SignIn = () => {
     id: "",
     name: "",
   });
-  const [headers, setHeaders] = useState({
-    authorization: "",
-  });
+
+  // const [headers, setHeaders] = useState({
+  //   authorization: "",
+  // });
 
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [authError, setAuthError] = useState(false);
   const { register, handleSubmit } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(JSON.stringify(data));
-    console.log(data);
-
+  const onSubmit = (formData) => {
     setLoading(true);
 
     axios
-      .post("https://books.ioasys.com.br/api/v1/auth/sign-in", data)
+      .post("https://books.ioasys.com.br/api/v1/auth/sign-in", formData)
       .then((response) => {
-        //console.log(response);
         setAuth(response.data);
+        setAuthError(false);
         setLoading(false);
       })
       .catch((error) => {
-        //console.log(error);
+        setAuthError(true);
         setLoading(false);
       });
 
@@ -73,6 +73,11 @@ const SignIn = () => {
         </InputContainer>
         <Button>Entrar</Button>
       </Form>
+
+      {loading && <Spinner />}
+      {authError && !loading && (
+        <ErrorMessage>Email e/ou senha incorretos.</ErrorMessage>
+      )}
     </SignInContainer>
   );
 };

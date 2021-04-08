@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-import BackgroundImage from "../../assets/images/homepage-background2x.png";
+import BackgroundImage from "../../assets/images/login-page-background2x.png";
 
-export const StyledHomePageContainer = styled.div`
+export const LoginPageContainer = styled.div`
   //Lateral padding
   padding: 115px;
   padding-right: 115px;

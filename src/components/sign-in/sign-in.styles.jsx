@@ -76,3 +76,8 @@ export const Button = styled.button`
   width: 100px;
   height: 30px;
 `;
+
+export const ErrorMessage = styled.p`
+  color: white;
+  font-weight: bold;
+`;

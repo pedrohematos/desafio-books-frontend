@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import LoginPage from "./pages/login-page/login-page.component";
-import HomePage from "./pages/home-page/home-page.components";
+import HomePage from "./pages/home-page/home-page.component";
 
 function App() {
   return (

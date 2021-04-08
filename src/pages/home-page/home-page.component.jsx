@@ -6,6 +6,8 @@ import { ReactComponent as PreviousPageButton } from "../../assets/icons/previou
 import { ReactComponent as NextPageButton } from "../../assets/icons/next-page-button.svg";
 
 import BookCard from "../../components/book-card/book-card.component";
+import BookDetails from "../../components/book-details/book-details.component";
+
 import { BOOK_CARD_DATA } from "../../components/book-card/book-card-data";
 
 import {
@@ -42,6 +44,8 @@ const HomePage = () => {
         <PreviousPageButton stroke-opacity="0.4" />
         <NextPageButton />
       </PaginationContainer>
+
+      <BookDetails></BookDetails>
     </HomePageContainer>
   );
 };

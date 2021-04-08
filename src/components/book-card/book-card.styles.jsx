@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const BookCardContainer = styled.div`
   width: 272px;
-  height: 160px;
+  height: 140px;
   padding: 19px 16px;
   margin: 8px;
 

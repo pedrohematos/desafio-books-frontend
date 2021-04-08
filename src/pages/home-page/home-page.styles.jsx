@@ -34,8 +34,6 @@ export const WelcomeContainer = styled.div`
 `;
 
 export const ContentContainer = styled.div`
-  //border: 1px solid red;
-
   width: 100%;
 
   display: flex;
@@ -54,5 +52,5 @@ export const PaginationContainer = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  margin-bottom: 50px;
+  margin-bottom: 16px;
 `;

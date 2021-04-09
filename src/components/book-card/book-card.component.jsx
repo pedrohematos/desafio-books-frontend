@@ -10,9 +10,9 @@ import {
   BookInfo,
 } from "./book-card.styles";
 
-const BookCard = ({ bookData }) => {
+const BookCard = ({ onClick = () => {}, bookData }) => {
   return (
-    <BookCardContainer onClick={() => console.log("Fui Clicado")}>
+    <BookCardContainer onClick={onClick}>
       <BookImageContainer>
         <BookImage src={bookData.imageUrl} alt="Minha Figura" />
       </BookImageContainer>

@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
+import { Redirect } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 
 import { ReactComponent as Logo } from "../../assets/icons/logo.svg";
 import { ReactComponent as LoginErrorMessage } from "../../assets/icons/login-error-message.svg";
 import Spinner from "../spinner/spinner.component";
+
+import { useAuth } from "../../hooks";
 
 import {
   SignInContainer,
@@ -17,67 +19,40 @@ import {
 } from "./sign-in.styles";
 
 const SignIn = () => {
-  const [auth, setAuth] = useState({
-    birthdate: "",
-    email: "",
-    gender: "",
-    id: "",
-    name: "",
-  });
-
-  // const [headers, setHeaders] = useState({
-  //   authorization: "",
-  // });
-
-  const [loading, setLoading] = useState(false);
-  const [authError, setAuthError] = useState(false);
   const { register, handleSubmit } = useForm();
+  const { auth, signed, signIn, loading, setLoading, authError } = useAuth();
 
-  const onSubmit = (formData) => {
+  const onSubmit = async (formData) => {
     setLoading(true);
-
-    axios
-      .post("https://books.ioasys.com.br/api/v1/auth/sign-in", formData)
-      .then((response) => {
-        setAuth(response.data);
-        setAuthError(false);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setAuthError(true);
-        setLoading(false);
-      });
-
-    // axios
-    //   .get("https://books.ioasys.com.br/api/v1/books", {headers: authorization})
-    //   .then((response) => {
-    //     console.log(response);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    await signIn(formData);
   };
 
   return (
-    <SignInContainer>
-      <Logo fill="white" />
+    <>
+      {signed ? (
+        <Redirect to="/home" />
+      ) : (
+        <SignInContainer>
+          <Logo fill="white" />
 
-      <Form onSubmit={handleSubmit(onSubmit)}>
-        <InputContainer>
-          <Label>Email</Label>
-          <Input type="email" required {...register("email")} />
-        </InputContainer>
+          <Form onSubmit={handleSubmit(onSubmit)}>
+            <InputContainer>
+              <Label>Email</Label>
+              <Input type="email" required {...register("email")} />
+            </InputContainer>
 
-        <InputContainer>
-          <Label>Senha</Label>
-          <Input type="password" required {...register("password")} />
-        </InputContainer>
-        <Button>Entrar</Button>
-      </Form>
+            <InputContainer>
+              <Label>Senha</Label>
+              <Input type="password" required {...register("password")} />
+            </InputContainer>
+            <Button>Entrar</Button>
+          </Form>
 
-      {loading && <Spinner />}
-      {authError && !loading && <LoginErrorMessage />}
-    </SignInContainer>
+          {loading && <Spinner />}
+          {authError && !loading && <LoginErrorMessage />}
+        </SignInContainer>
+      )}
+    </>
   );
 };
 

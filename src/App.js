@@ -1,15 +1,15 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Router } from "react-router-dom";
+import { AuthProvider } from "./contexts/auth";
 
-import LoginPage from "./pages/login-page/login-page.component";
-import HomePage from "./pages/home-page/home-page.component";
+import Routes from "./routes";
+import history from "./routes/history";
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={LoginPage} />
-        <Route exact path="/home" component={HomePage} />
-      </Switch>
+    <Router history={history}>
+      <AuthProvider>
+        <Routes />
+      </AuthProvider>
     </Router>
   );
 }

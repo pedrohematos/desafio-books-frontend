@@ -17,4 +17,9 @@ export const LoginPageContainer = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
+  @media screen and (max-width: 800px) {
+    padding: 16px;
+    padding-right: 16px;
+  }
 `;

@@ -11,11 +11,16 @@ export const BookCardContainer = styled.div`
   border-radius: 4px;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+
+  @media screen and (max-width: 870px) {
+    width: 100%;
+    margin: 0px;
+    margin-bottom: 16px;
+  }
 `;
 
 export const BookImageContainer = styled.div`
-  //border: 1px solid red;
   height: 100%;
   filter: drop-shadow(0px 6px 9px rgba(0, 0, 0, 0.15));
 `;
@@ -25,10 +30,9 @@ export const BookImage = styled.img`
 `;
 
 export const BookInfoContainer = styled.div`
-  //border: 1px solid blue;
-
-  width: 150px;
+  width: 100%;
   height: 100%;
+  margin-left: 15px;
 
   position: relative;
 `;
@@ -50,8 +54,6 @@ export const BookAuthors = styled.h2`
 `;
 
 export const BookInfo = styled.p`
-  font-family: Heebo;
-  font-style: normal;
   font-weight: normal;
   font-size: 12px;
   line-height: 20px;

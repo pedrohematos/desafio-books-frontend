@@ -16,6 +16,7 @@ import {
   HomePageContainer,
   NavBar,
   WelcomeContainer,
+  WelcomeMessage,
   ContentContainer,
   PaginationContainer,
   LogOutButton,
@@ -35,7 +36,9 @@ const HomePage = () => {
       <NavBar>
         <Logo fill="black" />
         <WelcomeContainer>
-          Bem vindo, <b>{getFirstName()}</b>
+          <WelcomeMessage>
+            Bem vindo, <b>{getFirstName()}</b>
+          </WelcomeMessage>
           <LogOutButton>
             <LogOutIcon onClick={signOut} />
           </LogOutButton>

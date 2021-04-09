@@ -44,8 +44,8 @@ const SignIn = () => {
             <InputContainer>
               <Label>Senha</Label>
               <Input type="password" required {...register("password")} />
+              <Button>Entrar</Button>
             </InputContainer>
-            <Button>Entrar</Button>
           </Form>
 
           {loading && <Spinner />}

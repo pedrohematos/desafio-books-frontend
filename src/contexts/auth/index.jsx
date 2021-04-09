@@ -33,7 +33,6 @@ export const AuthProvider = ({ children }) => {
           setHeaders(response.headers.authorization);
           setStorageUser(response.data);
           setStorageToken(response.headers.authorization);
-          console.log(response.data);
           setAuthError(false);
           setLoading(false);
         }

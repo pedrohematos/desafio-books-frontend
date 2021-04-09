@@ -2,8 +2,8 @@ import React from "react";
 
 import { ReactComponent as Logo } from "../../assets/icons/logo.svg";
 import { ReactComponent as LogOutIcon } from "../../assets/icons/logout.svg";
-import { ReactComponent as PreviousPageButton } from "../../assets/icons/previous-page-button.svg";
-import { ReactComponent as NextPageButton } from "../../assets/icons/next-page-button.svg";
+import { ReactComponent as PreviousPageIcon } from "../../assets/icons/previous-page-button.svg";
+import { ReactComponent as NextPageIcon } from "../../assets/icons/next-page-button.svg";
 
 import BookCard from "../../components/book-card/book-card.component";
 import BookDetails from "../../components/book-details/book-details.component";
@@ -19,7 +19,6 @@ import {
   WelcomeMessage,
   ContentContainer,
   PaginationContainer,
-  LogOutButton,
 } from "./home-page.styles";
 
 const HomePage = () => {
@@ -39,9 +38,7 @@ const HomePage = () => {
           <WelcomeMessage>
             Bem vindo, <b>{getFirstName()}</b>
           </WelcomeMessage>
-          <LogOutButton>
-            <LogOutIcon onClick={signOut} />
-          </LogOutButton>
+          <LogOutIcon onClick={signOut} style={{ cursor: "pointer" }} />
         </WelcomeContainer>
       </NavBar>
 
@@ -55,8 +52,15 @@ const HomePage = () => {
         <div>
           Página <b>1</b> de <b>100</b>
         </div>
-        <PreviousPageButton stroke-opacity="0.4" />
-        <NextPageButton />
+        <PreviousPageIcon
+          onClick={() => console.log("Fui Clicado")}
+          strokeOpacity="0.4"
+          style={{ cursor: "pointer" }}
+        />
+        <NextPageIcon
+          onClick={() => console.log("Fui Clicado")}
+          style={{ cursor: "pointer" }}
+        />
       </PaginationContainer>
 
       <BookDetails></BookDetails>

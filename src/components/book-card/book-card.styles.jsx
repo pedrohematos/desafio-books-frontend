@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const BookCardContainer = styled.div`
+  cursor: pointer;
+
   width: 272px;
   height: 140px;
   padding: 19px 16px;

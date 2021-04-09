@@ -68,9 +68,3 @@ export const PaginationContainer = styled.div`
 
   margin-bottom: 16px;
 `;
-
-export const LogOutButton = styled.button`
-  border: 0;
-  background: none;
-  cursor: pointer;
-`;

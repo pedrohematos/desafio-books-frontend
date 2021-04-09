@@ -12,7 +12,7 @@ import {
 
 const BookCard = ({ bookData }) => {
   return (
-    <BookCardContainer>
+    <BookCardContainer onClick={() => console.log("Fui Clicado")}>
       <BookImageContainer>
         <BookImage src={bookData.imageUrl} alt="Minha Figura" />
       </BookImageContainer>

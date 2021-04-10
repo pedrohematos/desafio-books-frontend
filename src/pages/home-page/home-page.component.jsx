@@ -7,8 +7,6 @@ import { ReactComponent as NextPageIcon } from "../../assets/icons/next-page-but
 
 import BookList from "../../components/books-list/books-list.component";
 
-import BookModal from "../../components/book-modal/book-modal.component";
-
 import { useAuth } from "../../hooks";
 
 import {
@@ -21,8 +19,6 @@ import {
 import { BookProvider } from "../../contexts/book";
 
 const HomePage = () => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
   const { auth, signOut } = useAuth();
 
   const getFirstName = () => {
@@ -45,8 +41,6 @@ const HomePage = () => {
       <BookProvider>
         <BookList />
       </BookProvider>
-
-      {isModalVisible ? console.log("Modal Ativado") : null}
 
       <PaginationContainer>
         <div>

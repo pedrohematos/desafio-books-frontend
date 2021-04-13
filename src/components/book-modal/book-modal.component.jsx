@@ -3,22 +3,15 @@ import React from "react";
 import { useBook } from "../../hooks";
 
 import Spinner from "../spinner/spinner.component";
+import BookInfo from "../book-info/book-info.component";
 
 import { ReactComponent as CloseButton } from "../../assets/icons/close-button.svg";
+import { ReactComponent as Quotes } from "../../assets/icons/quotes.svg";
 
 import {
   ModalContainer,
   ContentContainer,
   ButtonClose,
-  BookImageContainer,
-  BookImage,
-  BookInfoContainer,
-  BookTitle,
-  BookAuthors,
-  BookInfoSubContainer,
-  LeftSubInfo,
-  RightSubInfo,
-  BookDescriptionContainer,
 } from "./book-modal.styles";
 
 const BookModal = ({ id = "modal", onClose = () => {}, children }) => {
@@ -27,7 +20,6 @@ const BookModal = ({ id = "modal", onClose = () => {}, children }) => {
   };
 
   const { book, loadingBook, bookError } = useBook();
-  //console.log(book);
 
   return (
     <ModalContainer id={id} onClick={handleOutsideCLick}>
@@ -40,43 +32,7 @@ const BookModal = ({ id = "modal", onClose = () => {}, children }) => {
       )}
 
       <ContentContainer>
-        {book && !loadingBook && (
-          <>
-            <BookImageContainer>
-              <BookImage src={book.imageUrl} alt={book.title} />
-            </BookImageContainer>
-
-            <BookInfoContainer>
-              <BookTitle>{book.title}</BookTitle>
-              <BookAuthors>{book.authors}</BookAuthors>
-              INFORMAÇÕES
-              <BookInfoSubContainer>
-                <LeftSubInfo>
-                  Páginas <br />
-                  Editora <br />
-                  Publicação <br />
-                  Idioma <br />
-                  Título Original <br />
-                  ISBN-10 <br />
-                  ISBN-13 <br />
-                </LeftSubInfo>
-                <RightSubInfo>
-                  {book.pageCount} páginas <br />
-                  {book.publisher} <br />
-                  {book.published} <br />
-                  {book.language} <br />
-                  {book.title} <br />
-                  {book.isbn10} <br />
-                  {book.isbn13} <br />
-                </RightSubInfo>
-                {/* RESENHA DA EDITORA
-                <BookDescriptionContainer>
-                  {book.description}
-                </BookDescriptionContainer> */}
-              </BookInfoSubContainer>
-            </BookInfoContainer>
-          </>
-        )}
+        {book && !loadingBook && <BookInfo />}
       </ContentContainer>
     </ModalContainer>
   );

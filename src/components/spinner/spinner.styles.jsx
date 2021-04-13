@@ -3,7 +3,9 @@ import styled from "styled-components";
 export const SpinnerOverlay = styled.div`
   position: fixed;
   top: 50%;
-  left: 45%;
+  left: 50%;
+  margin-top: -25px;
+  margin-left: -25px;
 
   display: flex;
   justify-content: center;

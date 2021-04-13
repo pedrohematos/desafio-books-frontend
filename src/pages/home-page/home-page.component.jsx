@@ -56,8 +56,6 @@ const HomePage = () => {
           style={{ cursor: "pointer" }}
         />
       </PaginationContainer>
-
-      {/* <BookModal /> */}
     </HomePageContainer>
   );
 };

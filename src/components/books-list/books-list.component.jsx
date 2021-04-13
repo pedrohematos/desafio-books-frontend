@@ -29,7 +29,7 @@ const BooksList = () => {
   };
 
   return (
-    <ContentContainer>
+    <ContentContainer loadingBooks={loadingBooks} booksError={booksError}>
       {loadingBooks && <Spinner />}
       {booksError && !loadingBooks && (
         <div>
@@ -47,9 +47,7 @@ const BooksList = () => {
       ))}
 
       {isModalVisible ? (
-        <BookModal onClose={() => setIsModalVisible(false)}>
-          <h1>Meu conteúdo</h1>
-        </BookModal>
+        <BookModal onClose={() => setIsModalVisible(false)} />
       ) : null}
     </ContentContainer>
   );

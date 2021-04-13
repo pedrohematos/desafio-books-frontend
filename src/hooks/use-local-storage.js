@@ -3,6 +3,7 @@ import { useEffect, useCallback, useState } from "react";
 export const useLocalStorage = (key, defaultValue) => {
   const storageValue = localStorage.getItem(key);
   const initialValue = storageValue ? JSON.parse(storageValue) : null;
+  console.log("Chave: " + key + " / Meu storageValue: " + storageValue);
   const [value, setValue] = useState(initialValue);
 
   useEffect(() => {
@@ -30,3 +31,7 @@ export const useLocalStorage = (key, defaultValue) => {
     () => removingValue(),
   ];
 };
+
+// useLocalStorage gets two values: key and defaultValue and
+// it returns an array with three elements:
+// storageValue, setStorageValue and removeStorageValue

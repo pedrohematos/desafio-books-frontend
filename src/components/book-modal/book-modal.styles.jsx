@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 
 export const ModalContainer = styled.div`
@@ -13,11 +14,17 @@ export const ModalContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media screen and (max-width: 940px) {
+    align-items: flex-start;
+    padding-top: 80px;
+    height: 500vh;
+  }
 `;
 
 export const ContentContainer = styled.div`
   width: 50%;
-  height: 70%;
+  height: 55%;
 
   color: black;
   background-color: white;
@@ -29,4 +36,11 @@ export const ContentContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+
+  @media screen and (max-width: 940px) {
+    width: 82%;
+    flex-wrap: wrap;
+    height: auto;
+    padding: 24px;
+  }
 `;

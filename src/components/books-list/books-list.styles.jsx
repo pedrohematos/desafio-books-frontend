@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ContentContainer = styled.div`
-  width: 100%;
+  max-width: 1550px;
 
   ${({ loadingBooks, booksError }) =>
     (loadingBooks || booksError) &&
@@ -13,6 +13,5 @@ export const ContentContainer = styled.div`
   justify-content: space-around;
   flex-wrap: wrap;
 
-  margin-top: 42px;
-  margin-bottom: 24px;
+  margin: 42px auto 24px auto;
 `;

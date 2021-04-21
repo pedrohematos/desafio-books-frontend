@@ -10,7 +10,6 @@ import { ContentContainer } from "./books-list.styles";
 
 const BooksList = () => {
   const {
-    getBooks,
     getBookById,
     books,
     loadingBooks,
@@ -18,10 +17,6 @@ const BooksList = () => {
     setIsModalVisible,
     isModalVisible,
   } = useBook();
-
-  useEffect(() => {
-    getBooks();
-  }, []);
 
   const openModal = (id) => {
     getBookById(id);

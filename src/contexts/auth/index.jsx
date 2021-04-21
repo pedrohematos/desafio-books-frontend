@@ -16,11 +16,12 @@ export const AuthProvider = ({ children }) => {
   const [authError, setAuthError] = useState(false);
 
   const [auth, setAuth] = useState(null);
-  const [headers, setHeaders] = useState(null);
+  const [token, setToken] = useState(null);
 
   useEffect(() => {
     if (storageUser && storageToken) {
       setAuth(storageUser);
+      setToken(storageToken);
     }
   }, []);
 
@@ -30,9 +31,9 @@ export const AuthProvider = ({ children }) => {
       .then((response) => {
         if (response.data) {
           setAuth(response.data);
-          setHeaders(response.headers.authorization);
           setStorageUser(response.data);
           setStorageToken(response.headers.authorization);
+          setToken(response.headers.authorization);
           setAuthError(false);
           setLoading(false);
         }
@@ -49,6 +50,7 @@ export const AuthProvider = ({ children }) => {
     removeStorageToken();
     removeStorageUser();
     setAuth(null);
+    setToken(null);
   }, []);
 
   return (
@@ -56,6 +58,7 @@ export const AuthProvider = ({ children }) => {
       value={{
         signed: !!auth,
         auth,
+        token,
         setAuth,
         signIn,
         signOut,

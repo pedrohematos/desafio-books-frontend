@@ -1,11 +1,13 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
 
-import { useLocalStorage } from "../../hooks";
+import { useAuth } from "../../hooks";
 
 const BookContext = createContext(null);
 
 export const BookProvider = ({ children }) => {
+  const { token } = useAuth();
+
   const [books, setBooks] = useState(null);
   const [book, setBook] = useState(null);
 
@@ -17,22 +19,42 @@ export const BookProvider = ({ children }) => {
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const [storageToken, setStorageToken, removeStorageToken] = useLocalStorage(
-    "@authApp: token"
-  );
+  useEffect(() => {
+    if (token) {
+      const filter = {
+        page: 1,
+        amount: 12,
+      };
+      getBooks(filter);
+    }
+  }, [token]);
 
-  const getBooks = async () => {
+  const nextPage = () => {
+    if (books) {
+      const filter = {
+        page: books.page + 1,
+        amount: 12,
+      };
+      getBooks(filter);
+    }
+  };
+
+  const previousPage = () => {
+    if (books && books.page !== 1) {
+      const filter = {
+        page: books.page - 1,
+        amount: 12,
+      };
+      getBooks(filter);
+    }
+  };
+
+  const getBooks = async (filter) => {
     setLoadingBooks(true);
-
-    const filter = {
-      page: 1,
-      amount: 12,
-    };
-
     axios
       .get("https://books.ioasys.com.br/api/v1/books", {
         params: filter,
-        headers: { authorization: `Bearer ${storageToken}` },
+        headers: { authorization: `Bearer ${token}` },
       })
       .then((response) => {
         if (response.data) {
@@ -53,7 +75,7 @@ export const BookProvider = ({ children }) => {
 
     axios
       .get(`https://books.ioasys.com.br/api/v1/books/${id}`, {
-        headers: { authorization: `Bearer ${storageToken}` },
+        headers: { authorization: `Bearer ${token}` },
       })
       .then((response) => {
         if (response.data) {
@@ -80,6 +102,8 @@ export const BookProvider = ({ children }) => {
         loadingBook,
         booksError,
         bookError,
+        nextPage,
+        previousPage,
         isModalVisible,
         setIsModalVisible,
       }}

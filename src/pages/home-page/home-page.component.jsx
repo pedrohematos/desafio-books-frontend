@@ -2,10 +2,9 @@ import React, { useState } from "react";
 
 import { ReactComponent as Logo } from "../../assets/icons/logo.svg";
 import { ReactComponent as LogOutIcon } from "../../assets/icons/logout.svg";
-import { ReactComponent as PreviousPageIcon } from "../../assets/icons/previous-page-button.svg";
-import { ReactComponent as NextPageIcon } from "../../assets/icons/next-page-button.svg";
 
 import BookList from "../../components/books-list/books-list.component";
+import BooksPagination from "../../components/books-pagination/books-pagination.component";
 
 import { useAuth } from "../../hooks";
 
@@ -14,7 +13,6 @@ import {
   NavBar,
   WelcomeContainer,
   WelcomeMessage,
-  PaginationContainer,
 } from "./home-page.styles";
 import { BookProvider } from "../../contexts/book";
 
@@ -40,22 +38,8 @@ const HomePage = () => {
 
       <BookProvider>
         <BookList />
+        <BooksPagination />
       </BookProvider>
-
-      <PaginationContainer>
-        <div>
-          Página <b>1</b> de <b>100</b>
-        </div>
-        <PreviousPageIcon
-          onClick={() => console.log("Fui Clicado")}
-          strokeOpacity="0.4"
-          style={{ cursor: "pointer" }}
-        />
-        <NextPageIcon
-          onClick={() => console.log("Fui Clicado")}
-          style={{ cursor: "pointer" }}
-        />
-      </PaginationContainer>
     </HomePageContainer>
   );
 };
